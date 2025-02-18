@@ -1,0 +1,34 @@
+@startuml
+actor Admin
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "Base de données MongoDB" as DB
+
+Admin -> Frontend: Accéder aux ressources de la bibliothèque
+Frontend -> Backend: GET /api/libraries/resources
+Backend -> DB: Récupérer les ressources
+DB --> Backend: Données des ressources
+Backend --> Frontend: Envoyer la liste des ressources
+Frontend -> Admin: Afficher les ressources
+
+Admin -> Frontend: Sélectionner une ressource à partager
+Frontend -> Backend: POST /api/libraries/resources/{resource_id}/share
+Backend -> DB: Vérifier le statut de partage de la ressource
+
+alt Si la ressource est publique
+    Backend -> DB: Partager avec tous les campus
+    DB --> Backend: Confirmation
+    Backend --> Frontend: Partage réussi avec tous les campus
+else Si la ressource est limitée à l'école
+    Backend -> DB: Partager avec tous les étudiants de l'école
+    DB --> Backend: Confirmation
+    Backend --> Frontend: Partage réussi avec l'école
+else Si la ressource est limitée à un département
+    Backend -> DB: Partager avec les étudiants du département
+    DB --> Backend: Confirmation
+    Backend --> Frontend: Partage réussi avec le département
+end
+
+Frontend --> Admin: Afficher le message de confirmation
+
+@enduml

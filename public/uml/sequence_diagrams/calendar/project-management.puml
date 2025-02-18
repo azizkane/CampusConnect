@@ -1,0 +1,34 @@
+@startuml
+actor Étudiant
+actor Manager
+actor Admin
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "Base de données PostgreSQL" as DB
+
+Étudiant -> Frontend: Accéder à la gestion des projets
+Frontend -> Backend: GET /api/projects
+Backend -> DB: Récupérer la liste des projets
+DB --> Backend: Données des projets
+Backend --> Frontend: Envoyer la liste des projets
+Frontend -> Étudiant: Afficher les projets
+
+Étudiant -> Frontend: Créer ou modifier un projet
+Frontend -> Backend: POST /api/projects (ou PUT /api/projects/{project_id})
+Backend -> DB: Insérer ou mettre à jour le projet
+DB --> Backend: Confirmation
+Backend --> Frontend: Succès de l'opération
+Frontend --> Étudiant: Afficher la confirmation
+
+alt Si le projet nécessite une validation
+    Manager -> Frontend: Valider le projet
+    Frontend -> Backend: POST /api/projects/{project_id}/validate
+    Backend -> DB: Mettre à jour le statut de validation
+    DB --> Backend: Confirmation
+    Backend --> Frontend: Succès de la validation
+    Frontend --> Manager: Afficher la confirmation de validation
+else Le projet n'a pas besoin de validation
+    Étudiant -> Frontend: Gérer le projet sans validation
+end
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+actor Étudiant
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "Base de données PostgreSQL" as DB
+
+Étudiant -> Frontend: Accéder à un projet
+Frontend -> Backend: GET /api/projects/{project_id}
+Backend -> DB: Récupérer les détails du projet
+DB --> Backend: Données du projet
+Backend --> Frontend: Envoyer les détails du projet
+Frontend -> Étudiant: Afficher les détails du projet
+
+Étudiant -> Frontend: Assigner une tâche
+alt Si l'étudiant est un leader
+    Frontend -> Backend: POST /api/projects/{project_id}/tasks/{task_id}/assign
+    Backend -> DB: Mettre à jour l'assignation de la tâche
+    DB --> Backend: Confirmation
+    Backend --> Frontend: Succès de l'assignation
+    Frontend --> Étudiant: Afficher la confirmation de l'assignation
+else Si l'étudiant est un membre
+    Frontend --> Étudiant: Afficher un message d'erreur (accès refusé)
+end
+
+@enduml

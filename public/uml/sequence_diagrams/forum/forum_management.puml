@@ -1,0 +1,43 @@
+@startuml
+actor Admin
+actor Utilisateur
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "MongoDB DB" as DB
+
+Admin -> Frontend: Accéder à la gestion des forums
+Frontend -> Backend: GET /api/forums
+Backend -> DB: Récupérer la liste des forums
+DB --> Backend: Données des forums
+Backend --> Frontend: Envoyer la liste des forums
+Frontend -> Admin: Afficher les forums
+
+Admin -> Frontend: Créer un nouveau forum
+Frontend -> Backend: POST /api/forums
+Backend -> DB: Insérer un nouveau document de forum
+DB --> Backend: Confirmation
+Backend --> Frontend: ID du forum
+Frontend --> Admin: Afficher le message de succès et le forum
+
+Admin -> Frontend: Modifier un forum existant
+Frontend -> Backend: PUT /api/forums/{forum_id}
+Backend -> DB: Mettre à jour le document du forum
+DB --> Backend: Confirmation
+Backend --> Frontend: Succès de la mise à jour
+Frontend --> Admin: Afficher la confirmation de la mise à jour
+
+Admin -> Frontend: Supprimer un forum
+Frontend -> Backend: DELETE /api/forums/{forum_id}
+Backend -> DB: Supprimer le document du forum
+DB --> Backend: Confirmation
+Backend --> Frontend: Succès de la suppression
+Frontend --> Admin: Afficher la confirmation de la suppression
+
+Utilisateur -> Frontend: Consulter un forum
+Frontend -> Backend: GET /api/forums/{forum_id}
+Backend -> DB: Récupérer les détails du forum
+DB --> Backend: Détails du forum
+Backend --> Frontend: Envoyer les détails du forum
+Frontend -> Utilisateur: Afficher les détails du forum
+
+@enduml

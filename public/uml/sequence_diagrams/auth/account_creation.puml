@@ -1,0 +1,18 @@
+@startuml
+actor "Super Admin" as SuperAdmin
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "Base de données PostgreSQL" as DB
+
+SuperAdmin -> Frontend: Accéder à la page de création d'école
+Frontend -> Frontend: Afficher le formulaire de création d'école
+SuperAdmin -> Frontend: Remplir les détails de l'école et soumettre le formulaire
+Frontend -> Backend: POST /api/schools avec les données de l'école
+Backend -> DB: Insérer un nouvel enregistrement d'école
+Backend -> Backend: Créer un administrateur pour l'école avec accès complet
+Backend -> DB: Insérer un nouvel enregistrement d'administrateur
+DB --> Backend: Confirmation de la création de l'école et de l'administrateur
+Backend --> Frontend: Retourner une réponse de succès avec les IDs de l'école et de l'administrateur
+Frontend --> SuperAdmin: Afficher un message de succès avec les détails de l'école et de l'administrateur
+
+@enduml

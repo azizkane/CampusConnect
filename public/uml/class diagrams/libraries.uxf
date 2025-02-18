@@ -1,0 +1,87 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>	Space for diagram notess
+bg=white
+</help_text><element><id>UMLClass</id><coordinates><x>378</x><y>342</y><w>225</w><h>225</h></coordinates><panel_attributes>libraries
+--
+id
+name
+description
+category
+access_level
+
+departments (list)
+classes (list)
+	
+
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>441</y><w>153</w><h>36</h></coordinates><panel_attributes>lt=&lt;..
+</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>729</x><y>342</y><w>234</w><h>225</h></coordinates><panel_attributes>documents
+--
+id
+title
+description
+access_level
+meta	
+
+
+uploaded_by_user__id
+doc_category_id
+library_id
+
+
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>18</x><y>162</y><w>225</w><h>153</h></coordinates><panel_attributes>admins
+--
+id
+
+is_active (bool)
+
+-
+timestamps()
+createCategories()
+CRUD()
+addDocsToLibrary()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>234</x><y>198</y><w>279</w><h>162</h></coordinates><panel_attributes>  manages
+lt=&lt;-
+</panel_attributes><additional_attributes>290;160;290;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>639</y><w>225</w><h>234</h></coordinates><panel_attributes>library_categories
+--
+id
+name
+description
+category
+department
+access_level
+target
+
+	
+school_id
+manager_id
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>405</y><w>234</w><h>117</h></coordinates><panel_attributes>users
+--
+id
+
+is_active (bool)
+-
+timestamps()
+CRUD_comments()
+access_libraries()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>234</x><y>441</y><w>162</w><h>45</h></coordinates><panel_attributes>  access
+lt=&lt;-
+</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>675</y><w>252</w><h>171</h></coordinates><panel_attributes>schools
+--
+id
+name
+location
+
+admin_id
+
+
+is_active (bool)
+-
+timestamps()
+access_public_libraries()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>243</x><y>738</y><w>153</w><h>45</h></coordinates><panel_attributes>  access
+lt=&lt;-
+</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>486</x><y>558</y><w>27</w><h>99</h></coordinates><panel_attributes>lt=&lt;..
+</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element></diagram>

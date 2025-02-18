@@ -1,0 +1,21 @@
+@startuml
+actor Utilisateur
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "MongoDB DB" as DB
+
+Utilisateur -> Frontend: Naviguer vers la section Forums
+Frontend -> Backend: GET /api/forums
+Backend -> DB: Récupérer la liste des forums
+DB --> Backend: Données des forums
+Backend --> Frontend: Envoyer la liste des forums
+Frontend -> Utilisateur: Afficher les forums
+
+Utilisateur -> Frontend: Sélectionner un forum et créer un nouveau post
+Frontend -> Backend: POST /api/forums/{forum_id}/posts
+Backend -> DB: Insérer un nouveau document de post
+DB --> Backend: Confirmation
+Backend --> Frontend: ID du post
+Frontend --> Utilisateur: Afficher le message de succès et le post
+
+@enduml

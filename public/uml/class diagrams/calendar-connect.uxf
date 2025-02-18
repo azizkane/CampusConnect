@@ -1,0 +1,106 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>472</x><y>808</y><w>208</w><h>192</h></coordinates><panel_attributes>tasks
+--
+id
+description
+status
+
+start_date
+end_date
+
+project_id
+student_id
+
+is_active (bool)
+is_ok (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>112</x><y>552</y><w>208</w><h>280</h></coordinates><panel_attributes>projects
+--
+id
+name
+description
+category
+place
+status
+validation_author
+validation_date
+
+start_date
+end_date
+
+team_id 
+school_id
+author_id (validation)
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>112</x><y>0</y><w>208</w><h>240</h></coordinates><panel_attributes>events
+--
+id
+name
+description
+author (str)
+category
+status
+target
+
+place
+start_date
+end_date
+
+
+campus_id
+
+is_active (bool)
+-
+timestaps()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>112</x><y>336</y><w>208</w><h>136</h></coordinates><panel_attributes>admins
+--
+id
+
+is_active (bool)
+
+-
+timestamps()
+approve_or_reject_team_projects()
+CRUD_events()
+add_student_to_team()
+assign_role_to_students()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>472</x><y>568</y><w>208</w><h>168</h></coordinates><panel_attributes>teams
+--
+id
+name
+students (list)
+
+admin_id
+school_id
+leader_id
+
+is_active (bool)
+-
+timestamps()
+deposit_projects()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>232</y><w>72</w><h>120</h></coordinates><panel_attributes>  manages
+lt=&lt;-
+</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>472</x><y>312</y><w>208</w><h>160</h></coordinates><panel_attributes>students
+--
+id
+team_role
+class_id
+school_id
+teams (list)
+
+is_active (bool)
+-
+timestamps()
+manage_members_if_role_is_leader()
+assign_tasks_to_member_if_role_is_leader()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>640</y><w>176</w><h>48</h></coordinates><panel_attributes>  deposit
+
+lt=&lt;-
+</panel_attributes><additional_attributes>10;20;200;20</additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>464</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;..
+join</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>672</x><y>368</y><w>120</w><h>552</h></coordinates><panel_attributes>lt=&lt;-
+ assign
+
+</panel_attributes><additional_attributes>10;670;90;670;90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>824</y><w>280</w><h>96</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;100;330;100</additional_attributes></element><element><id>Relation</id><coordinates><x>208</x><y>464</y><w>64</w><h>104</h></coordinates><panel_attributes>lt=&lt;-
+validates</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>672</x><y>368</y><w>88</w><h>552</h></coordinates><panel_attributes>lt=&lt;-
+
+
+</panel_attributes><additional_attributes>10;10;90;10;90;670;10;670</additional_attributes></element></diagram>

@@ -1,0 +1,66 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>745</x><y>384</y><w>208</w><h>160</h></coordinates><panel_attributes>topics
+--
+id
+title
+description
+views_count
+
+forum_id
+created_by_user__id
+
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>81</x><y>224</y><w>208</w><h>104</h></coordinates><panel_attributes>users
+--
+id
+
+is_active (bool)
+-
+timestamps()
+CRUD_comments()
+access_forum()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>81</x><y>424</y><w>208</w><h>128</h></coordinates><panel_attributes>admins
+--
+id
+
+is_active (bool)
+
+-
+timestamps()
+CRUD_forum()
+CRUD_posts()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>425</x><y>368</y><w>208</w><h>192</h></coordinates><panel_attributes>forums
+--
+id
+name
+status
+description
+
+department_id
+school_id
+moderator_id	
+
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>177</x><y>152</y><w>256</w><h>88</h></coordinates><panel_attributes>lt=&lt;-
+post        </panel_attributes><additional_attributes>300;20;10;20;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>417</x><y>112</y><w>208</w><h>112</h></coordinates><panel_attributes>comments
+--
+id
+name
+description
+
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>625</x><y>440</y><w>136</w><h>32</h></coordinates><panel_attributes></panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>281</x><y>320</y><w>160</w><h>104</h></coordinates><panel_attributes>lt=&lt;-
+          consult</panel_attributes><additional_attributes>180;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>177</x><y>544</y><w>368</w><h>112</h></coordinates><panel_attributes>lt=&lt;-
+manage</panel_attributes><additional_attributes>440;20;440;120;10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>737</x><y>96</y><w>216</w><h>136</h></coordinates><panel_attributes>posts
+--
+id
+content	
+
+topic_id
+author_id
+parent_post_id
+
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>617</x><y>144</y><w>136</w><h>32</h></coordinates><panel_attributes></panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>841</x><y>224</y><w>24</w><h>176</h></coordinates><panel_attributes>lt=&lt;..
+</panel_attributes><additional_attributes>10;10;10;200</additional_attributes></element></diagram>

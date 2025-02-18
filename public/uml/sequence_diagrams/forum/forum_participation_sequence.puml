@@ -1,0 +1,28 @@
+@startuml
+actor Utilisateur
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "Base de données MongoDB" as DB
+
+Utilisateur -> Frontend: Naviguer vers un forum
+Frontend -> Backend: GET /api/forums/{forum_id}
+Backend -> DB: Récupérer les détails du forum
+DB --> Backend: Données du forum
+Backend --> Frontend: Envoyer les détails du forum
+Frontend -> Utilisateur: Afficher les détails du forum
+
+Utilisateur -> Frontend: Répondre à un post
+Frontend -> Backend: POST /api/forums/{forum_id}/posts/{post_id}/reply
+Backend -> DB: Insérer une nouvelle réponse
+DB --> Backend: Confirmation
+Backend --> Frontend: ID de la réponse
+Frontend --> Utilisateur: Afficher la réponse ajoutée
+
+Utilisateur -> Frontend: Aimer un post
+Frontend -> Backend: POST /api/forums/{forum_id}/posts/{post_id}/like
+Backend -> DB: Mettre à jour le compteur de likes
+DB --> Backend: Confirmation
+Backend --> Frontend: Succès de l'opération
+Frontend --> Utilisateur: Mettre à jour l'affichage du compteur de likes
+
+@enduml

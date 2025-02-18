@@ -1,0 +1,20 @@
+@startuml
+actor Utilisateur
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "Base de données PostgreSQL" as DB
+
+Utilisateur -> Frontend: Entrer les identifiants
+Frontend -> Backend: POST /api/auth/login
+Backend -> DB: Rechercher l'utilisateur par email
+DB --> Backend: Données de l'utilisateur
+Backend -> Backend: Vérifier le mot de passe
+alt Si les identifiants sont valides
+    Backend --> Frontend: Jeton d'authentification
+    Frontend --> Utilisateur: Connexion réussie
+else Si les identifiants sont invalides
+    Backend --> Frontend: Message d'erreur
+    Frontend --> Utilisateur: Afficher l'erreur
+end
+
+@enduml

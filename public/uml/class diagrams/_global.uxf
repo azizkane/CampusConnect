@@ -1,0 +1,166 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>513</x><y>414</y><w>252</w><h>261</h></coordinates><panel_attributes>users
+--
+id
+email
+phone_number
+date_of_birth
+role
+hashedpassword
+token
+
+first_name
+last_name
+birth_date
+
+
+is_active (bool)
+-
+timestamps()
+access_to_features_according_to_permissions()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>882</x><y>252</y><w>225</w><h>189</h></coordinates><panel_attributes>students
+--
+id
+parents_names
+parentes_email
+class_id
+school_id
+teams (list)
+
+is_active (bool)
+-
+timestamps()
+join_or_manage_team()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>486</x><y>729</y><w>297</w><h>162</h></coordinates><panel_attributes>managers
+--
+id
+
+is_active (bool)
+
+-
+timestamps()
+
+CRUD_students()
+CRUD_TEAMS()
+manage_school_features_according_to_permission()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>918</x><y>936</y><w>252</w><h>207</h></coordinates><panel_attributes>schools
+--
+id
+name
+location
+
+admin_id
+
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>837</y><w>225</w><h>270</h></coordinates><panel_attributes>events
+--
+id
+name
+description
+author (str)
+TEAMS (list of id)
+
+
+start_date
+end_date
+
+
+school_id
+
+is_active (bool)
+-
+timestaps()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>81</y><w>225</w><h>180</h></coordinates><panel_attributes>teams
+--
+id
+name
+type
+students (list)
+
+admin_id
+leader_id	
+campus_id	
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>0</y><w>234</w><h>261</h></coordinates><panel_attributes>projects
+--
+id
+name
+description
+location
+
+start_date
+end_date
+
+location
+
+team_id 
+school_id
+author_id (validation)
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1188</x><y>252</y><w>225</w><h>180</h></coordinates><panel_attributes>classes
+--
+id
+name
+location (str)
+room (int)
+students (list)
+
+campus_id
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>576</y><w>234</w><h>180</h></coordinates><panel_attributes>forums
+--
+id
+name
+description
+
+school_id
+status_id
+
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>315</y><w>225</w><h>207</h></coordinates><panel_attributes>libraries
+--
+id
+name
+description
+image
+resource
+
+school_id
+author_id
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>324</y><w>270</w><h>108</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;100;10;10;280;10</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>666</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>882</y><w>27</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>153</y><w>216</w><h>117</h></coordinates><panel_attributes></panel_attributes><additional_attributes>220;110;220;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1098</x><y>324</y><w>108</w><h>36</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>Relation</id><coordinates><x>225</x><y>513</y><w>306</w><h>486</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;520;190;520;190;10;320;10</additional_attributes></element><element><id>Relation</id><coordinates><x>225</x><y>513</y><w>306</w><h>171</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;170;190;170;190;10;320;10</additional_attributes></element><element><id>Relation</id><coordinates><x>234</x><y>108</y><w>297</w><h>432</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;180;10;180;460;310;460</additional_attributes></element><element><id>Relation</id><coordinates><x>225</x><y>405</y><w>306</w><h>135</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;190;10;190;130;320;130</additional_attributes></element><element><id>UMLClass</id><coordinates><x>918</x><y>576</y><w>252</w><h>207</h></coordinates><panel_attributes>departments
+--
+id
+name
+description
+creation_date
+location
+
+school_id
+supervisor_id
+
+
+is_active (bool)
+-
+timestamps()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>909</x><y>657</y><w>27</w><h>36</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>513</x><y>963</y><w>252</w><h>162</h></coordinates><panel_attributes>admins
+--
+id
+
+is_active (bool)
+
+-
+timestamps()
+
+CRUD_managers()
+manage_all_school_features()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>756</x><y>1008</y><w>180</w><h>36</h></coordinates><panel_attributes></panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1161</x><y>423</y><w>162</w><h>216</h></coordinates><panel_attributes>lt=.&gt;
+</panel_attributes><additional_attributes>160;10;160;220;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1161</x><y>720</y><w>108</w><h>279</h></coordinates><panel_attributes>lt=.&gt;
+</panel_attributes><additional_attributes>10;10;100;10;100;290;10;290</additional_attributes></element></diagram>

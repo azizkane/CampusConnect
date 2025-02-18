@@ -1,0 +1,54 @@
+@startuml
+actor Admin
+actor TeamMember as "Étudiant"
+participant "Frontend\n(Next.js + React)" as Frontend
+participant "Backend\n(Django)" as Backend
+database "MongoDB DB" as MongoDB
+
+Admin -> Frontend: Accéder à la gestion des événements
+Frontend -> Backend: GET /api/events
+Backend -> MongoDB: Récupérer la liste des événements
+MongoDB --> Backend: Données des événements
+Backend --> Frontend: Envoyer la liste des événements
+Frontend -> Admin: Afficher les événements
+
+Admin -> Frontend: Créer un nouvel événement
+Frontend -> Backend: POST /api/events
+Backend -> MongoDB: Insérer un nouveau document d'événement
+MongoDB --> Backend: Confirmation
+Backend --> Frontend: ID de l'événement
+Frontend --> Admin: Afficher le message de succès et l'événement
+
+TeamMember -> Frontend: Soumettre un projet
+Frontend -> Backend: POST /api/projects
+Backend -> MongoDB: Insérer un nouveau projet
+MongoDB --> Backend: Confirmation
+Backend --> Frontend: ID du projet
+Frontend --> TeamMember: Afficher le message de succès et le projet
+
+alt Si le projet nécessite une validation
+    Admin -> Frontend: Valider le projet
+    Frontend -> Backend: POST /api/projects/{project_id}/validate
+    Backend -> MongoDB: Mettre à jour le statut de validation
+    MongoDB --> Backend: Confirmation
+    Backend --> Frontend: Succès de la validation
+    Frontend --> Admin: Afficher la confirmation de validation
+else Le projet n'a pas besoin de validation
+    TeamMember -> Frontend: Gérer le projet sans validation
+end
+
+Admin -> Frontend: Modifier un événement existant
+Frontend -> Backend: PUT /api/events/{event_id}
+Backend -> MongoDB: Mettre à jour le document de l'événement
+MongoDB --> Backend: Confirmation
+Backend --> Frontend: Succès de la mise à jour
+Frontend --> Admin: Afficher la confirmation de la mise à jour
+
+Admin -> Frontend: Supprimer un événement
+Frontend -> Backend: DELETE /api/events/{event_id}
+Backend -> MongoDB: Supprimer le document de l'événement
+MongoDB --> Backend: Confirmation
+Backend --> Frontend: Succès de la suppression
+Frontend --> Admin: Afficher la confirmation de la suppression
+
+@enduml
